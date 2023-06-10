@@ -3,13 +3,29 @@ import subprocess
 
 app = Flask(__name__)
 
+import re
+
+def extract_text_between_subtexts(text, start_subtext, end_subtext):
+    pattern = re.escape(start_subtext) + r'(.*?)' + re.escape(end_subtext)
+    match = re.search(pattern, text, re.DOTALL)
+    if match:
+        return match.group(1)
+    else:
+        return ""
+
+
 @app.route('/tokens', methods=['POST'])
 def create_token():
     # Retrieve parameters from the request body
-    tokenName = request.json.get('tokenName')
-    tokenSymbol = request.json.get('tokenSymbol')
-    tokenInitialSupply = request.json.get('tokenInitialSupply')
-    tokenInitialSupplyParameter = tokenInitialSupply * 1000000000
+    tokenName = request.args.get('tokenName')
+    tokenSymbol = request.args.get('tokenSymbol')
+    tokenInitialSupply = request.args.get('tokenInitialSupply')
+    tokenInitialSupplyParameter = int(tokenInitialSupply) * 1000000000
+
+    print(tokenName)
+    print(tokenSymbol)
+    print(tokenInitialSupply)
+
 
     tokenCommandLocal = f"npx locklift run -s ./scripts/1-deploy-token-root.ts \"{tokenName}\" \"{tokenSymbol}\" {tokenInitialSupplyParameter} -n local"
 
@@ -27,11 +43,14 @@ def create_token():
     before, _, after = decoded_output.partition(subtext)
     after = after.replace('\n', '')
 
+    everBalance = extract_text_between_subtexts(decoded_output, "the giver balance is: ", " ever")
+
     # Example response with created token details
     token = {
         'name': tokenName,
         'symbol': tokenSymbol,
         'initialSupply': tokenInitialSupply,
+        'everBalance': everBalance,
         'id': after,
     }
 
