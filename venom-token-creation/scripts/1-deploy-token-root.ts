@@ -1,5 +1,9 @@
 import { Address, toNano, WalletTypes } from "locklift";
 
+const name = "VenomChat Token";
+const symbol = "VCHAT";
+const initialSupply = 100000000000;
+
 async function main() {
   const signer = (await locklift.keystore.getSigner("0"))!;
   const { account } = await locklift.factory.accounts.addNewAccount({
