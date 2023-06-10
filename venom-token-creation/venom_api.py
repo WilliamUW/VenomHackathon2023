@@ -56,5 +56,49 @@ def create_token():
 
     return jsonify(token), 201
 
+@app.route('/nfts', methods=['POST'])
+def create_nft():
+    # Retrieve parameters from the request body
+    nftName = request.args.get('nftName')
+    nftDescription = request.args.get('nftDescription')
+    nftImageUrl = request.args.get('nftImageUrl')
+    nftSourceUrl = request.args.get('nftSourceUrl')
+
+    print(nftName)
+    print(nftDescription)
+    print(nftImageUrl)
+    print(nftSourceUrl)
+
+
+    tokenCommandLocal = f"npx locklift run -s ./scripts/1-deploy-sample.ts \"{nftName}\" \"{nftDescription}\" \"{nftImageUrl}\" \"{nftSourceUrl}\" -n local"
+
+    # Run the command and capture the output
+    output = subprocess.check_output(tokenCommandLocal, shell=True)
+
+    # Decode the output (assuming it's in UTF-8 encoding)
+    decoded_output = output.decode("utf-8")
+
+    # Print the output
+    print(decoded_output)
+
+    subtext = "deployed at: "
+
+    before, _, after = decoded_output.partition(subtext)
+    after = after.replace('\n', '')
+
+    everBalance = extract_text_between_subtexts(decoded_output, "the giver balance is: ", " ever")
+
+    # Example response with created token details
+    token = {
+        'nftName': nftName,
+        'nftDescription': nftDescription,
+        'nftImageUrl': nftImageUrl,
+        'nftSourceUrl': nftSourceUrl,
+        'everBalance': everBalance,
+        'id': after,
+    }
+
+    return jsonify(token), 201
+
 if __name__ == '__main__':
     app.run()
