@@ -1,10 +1,9 @@
 import { Address, toNano, WalletTypes } from "locklift";
 
-const name = "VenomChat Token";
-const symbol = "VCHAT";
-const initialSupply = 100000000000;
-
-async function main() {
+async function main(name, symbol, initialSupply) {
+  console.log("Name: ", name);
+  console.log("Symbol: ", symbol);
+  console.log("initialSupply: ", initialSupply);
   const signer = (await locklift.keystore.getSigner("0"))!;
   const { account } = await locklift.factory.accounts.addNewAccount({
     type: WalletTypes.WalletV3,
@@ -16,8 +15,8 @@ async function main() {
     publicKey: signer.publicKey,
     initParams: {
       randomNonce_: 0,
-      name_: "VenomChat Token",
-      symbol_: "VCHAT",
+      name_: "VenomChat CMD Token",
+      symbol_: "VCHATCMD",
       decimals_: 9,
       rootOwner_: new Address("0:3eb450ea8e4a9bacc46fdd733caaa156edb8be82113469dae234ca6f8907e258"),
       walletCode_: (await locklift.factory.getContractArtifacts("TokenWallet")).code,
@@ -38,7 +37,10 @@ async function main() {
   console.log(`TokenRoot deployed at: ${tokenRoot.address.toString()}`);
 }
 
-main()
+// Retrieve the command line arguments
+const [name, symbol, initialSupply] = process.argv.slice(5);
+
+main(name, symbol, parseInt(initialSupply))
   .then(() => process.exit(0))
   .catch(e => {
     console.log(e);
