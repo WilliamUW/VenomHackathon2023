@@ -14,6 +14,10 @@ def extract_text_between_subtexts(text, start_subtext, end_subtext):
         return ""
 
 
+@app.route('/status', methods=['GET'])
+def get_status():
+    return jsonify({'message': 'Running locally!'})
+
 @app.route('/tokens', methods=['POST'])
 def create_token():
     # Retrieve parameters from the request body
