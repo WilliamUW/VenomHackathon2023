@@ -12,8 +12,8 @@ async function main() {
     publicKey: signer.publicKey,
     initParams: {
       randomNonce_: 0,
-      name_: "VenomChat Token 2",
-      symbol_: "VCHAT 2",
+      name_: "VenomChat Token",
+      symbol_: "VCHAT",
       decimals_: 9,
       rootOwner_: new Address("0:3eb450ea8e4a9bacc46fdd733caaa156edb8be82113469dae234ca6f8907e258"),
       walletCode_: (await locklift.factory.getContractArtifacts("TokenWallet")).code,
