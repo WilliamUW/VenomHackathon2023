@@ -1,7 +1,3 @@
-# Venom Hackathon 2023
-
-![](./Demos/VenomNFTMint.mkv)
-
 # VenomChat - Blockchain Made Easy with Venom
 
 ## 💡 Inspiration 
@@ -17,13 +13,14 @@ VenomChat is a platform-agnostic solution that addresses the high barrier of ent
 ## 🚧 How we built it 
 
 Venom Smart Contracts: 
+1. For deployment of Venom tokens
+2. For minting of Venom NFTs
 
 Empowering users to access Venom's network across web, mobile, Discord, Slack, and Telegram.
 
 Check out our [DoraHacks page!](https://dorahacks.io/buidl/6382)
 
 VenomChat is a [Venom Hackathon](https://hackathon.venom.network/) project in the Tools and Infrastructure track
-
 
 ## The Team
 
