@@ -24,12 +24,10 @@ const config: LockliftConfig = {
     version: "0.62.0",
 
     // Specify config for extarnal contracts as in exapmple
-    // externalContracts: {
-    //   "node_modules/broxus-ton-tokens-contracts/build": ['TokenRoot', 'TokenWallet']
-    // }
     externalContracts: {
-      "node_modules/tip3/build": ["TokenRoot", "TokenWallet"],
-    },
+      "node_modules/tip4/contracts/TIP4_3/compiled": ['Index', 'IndexBasis'],
+      "node_modules/tip3/build": ['TokenRoot', 'TokenWallet'],
+    }
   },
   linker: {
     // Specify path to your stdlib
@@ -104,8 +102,8 @@ const config: LockliftConfig = {
         },
       },
       giver: {
-        address: "0:0000000000000000000000000000000000000000000000000000000000000000",
-        phrase: "phrase",
+        address: "0:c4ff7f62da329644fbbc48479dbdc1869cd91ba920d1ce7fec25fe885e7c3f49",
+        phrase: "awful copper marine decide outside caught opinion quit rib concert six rare",
         accountId: 0,
       },
       tracing: {
@@ -114,7 +112,7 @@ const config: LockliftConfig = {
       keys: {
         // Use everdev to generate your phrase
         // !!! Never commit it in your repos !!!
-        // phrase: "action inject penalty envelope rabbit element slim tornado dinner pizza off blood",
+        phrase: "awful copper marine decide outside caught opinion quit rib concert six rare",
         amount: 20,
       },
     },
@@ -141,7 +139,7 @@ const config: LockliftConfig = {
       keys: {
         // Use everdev to generate your phrase
         // !!! Never commit it in your repos !!!
-        // phrase: "action inject penalty envelope rabbit element slim tornado dinner pizza off blood",
+        phrase: "awful copper marine decide outside caught opinion quit rib concert six rare",
         amount: 20,
       },
     },
