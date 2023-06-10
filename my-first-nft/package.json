@@ -8,7 +8,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "tip3": "https://github.com/venom-blockchain/guides/tree/master/nft-auction-contracts/precompiled",
+    "tip3": "git://github.com/broxus/tip3#v5",
     "@itgold/everscale-tip": "^1.1.4",
     "@types/chai": "^4.3.5",
     "@types/mocha": "^10.0.1",
