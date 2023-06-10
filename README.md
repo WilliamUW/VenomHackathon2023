@@ -16,7 +16,7 @@ VenomChat is a platform-agnostic solution that addresses the high barrier of ent
 
 ## 🚧 How we built it 
 
-Chainlink:
+Venom Smart Contracts: 
 
 Empowering users to access Venom's network across web, mobile, Discord, Slack, and Telegram.
 
