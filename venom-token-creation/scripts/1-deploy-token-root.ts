@@ -15,8 +15,8 @@ async function main(name, symbol, initialSupply) {
     publicKey: signer.publicKey,
     initParams: {
       randomNonce_: 0,
-      name_: "VenomChat CMD Token",
-      symbol_: "VCHATCMD",
+      name_: name,
+      symbol_: symbol,
       decimals_: 9,
       rootOwner_: new Address("0:3eb450ea8e4a9bacc46fdd733caaa156edb8be82113469dae234ca6f8907e258"),
       walletCode_: (await locklift.factory.getContractArtifacts("TokenWallet")).code,
@@ -24,7 +24,7 @@ async function main(name, symbol, initialSupply) {
     },
     constructorParams: {
       initialSupplyTo: new Address("0:3eb450ea8e4a9bacc46fdd733caaa156edb8be82113469dae234ca6f8907e258"),
-      initialSupply: 100000000000,
+      initialSupply: initialSupply,
       deployWalletValue: 100000000,
       mintDisabled: true,
       burnByRootDisabled: true,
