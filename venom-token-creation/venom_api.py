@@ -31,7 +31,7 @@ def create_token():
     print(tokenInitialSupply)
 
 
-    tokenCommandLocal = f"npx locklift run -s ./scripts/1-deploy-token-root.ts \"{tokenName}\" \"{tokenSymbol}\" {tokenInitialSupplyParameter} -n local"
+    tokenCommandLocal = f"npx locklift run -s ./scripts/1-deploy-token-root.ts \"{tokenName}\" \"{tokenSymbol}\" {tokenInitialSupplyParameter} -n venom_testnet"
 
     # Run the command and capture the output
     output = subprocess.check_output(tokenCommandLocal, shell=True)
@@ -74,7 +74,7 @@ def create_nft():
     print(nftSourceUrl)
 
 
-    tokenCommandLocal = f"npx locklift run -s ./scripts/1-deploy-sample.ts \"{nftName}\" \"{nftDescription}\" \"{nftImageUrl}\" \"{nftSourceUrl}\" -n local"
+    tokenCommandLocal = f"npx locklift run -s ./scripts/1-deploy-sample.ts \"{nftName}\" \"{nftDescription}\" \"{nftImageUrl}\" \"{nftSourceUrl}\" -n venom_testnet"
 
     # Run the command and capture the output
     output = subprocess.check_output(tokenCommandLocal, shell=True)
